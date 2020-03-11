@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
-import BlogContext from './BlogContext';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { addPost, editPost } from './actions';
+import { useDispatch } from 'react-redux';
 
 
-function BlogForm({ showEditForm, post }) {
+function BlogForm({ showEditForm, post, postId }) {
   const INITIAL_STATE = post ?
     {
       title: post.title,
@@ -18,7 +19,7 @@ function BlogForm({ showEditForm, post }) {
     };
 
   const history = useHistory();
-  const { addPost, editPost } = useContext(BlogContext);
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState(INITIAL_STATE);
 
   const handleChange = (evt) => {
@@ -31,21 +32,18 @@ function BlogForm({ showEditForm, post }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (formIsDone) {
+    if (isValid) {
       if (post) {
-        editPost(post.id, formData);
+        dispatch(editPost(postId, formData));
         showEditForm(false);
       } else {
-        addPost(formData);
+        dispatch(addPost(formData));
         history.push('/');
       }
     }
   }
 
-  // CHECK THAT DISABLED WORKS
-  const formIsDone = (
-    Object.values(formData).every(val => val)
-  );
+  const isValid = Object.values(formData).every(val => val);
 
   return (
     <div>
@@ -74,7 +72,7 @@ function BlogForm({ showEditForm, post }) {
           value={formData.body}
           onChange={handleChange}
         />
-        <button disabled={!formIsDone}>Save</button>
+        <button disabled={!isValid}>Save</button>
         <button onClick={() => history.push('/')}>Cancel</button>
       </form>
     </div >

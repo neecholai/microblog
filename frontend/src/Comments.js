@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
-import BlogContext from './BlogContext';
+import { useSelector } from 'react-redux';
 
 function Comments({ postId }) {
-  const { comments } = useContext(BlogContext);
+  const comments = useSelector(st => st.posts[postId].comments);
 
-  const commentsListJSX = comments[postId].map(
+  const commentsListJSX = comments.map(
     comment => <Comment key={comment.id} comment={comment} postId={postId}/>
   );
 
