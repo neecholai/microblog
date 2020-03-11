@@ -8,7 +8,7 @@ function NavBar () {
       <h1>Microblog</h1>
       <p>Get in the Rithm of blogging!</p>
       <NavLink exact to="/">Blog</NavLink>
-      <NavLink exact to="/new">Add a new post</NavLink>
+      <NavLink exact to="/posts/new">Add a new post</NavLink>
     </div>
   );
 }

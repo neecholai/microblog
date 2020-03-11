@@ -1,11 +1,11 @@
 import React from 'react';
-import BlogList from './BlogList';
+import BlogPostList from './BlogPostList';
 
 function Home() {
   return (
     <div>
       <h2>Welcome to <b>Microblog</b>, the best blog on the web</h2>
-      <BlogList />
+      <BlogPostList />
     </div>
   )
 }

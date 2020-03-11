@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function BlogCard({ id, title, description }) {
+function BlogPostCard({ id, title, description }) {
 
   return (
     <div>
-      <Link exact to={`/${id}`}>{title}</Link>
+      <Link to={`/posts/${id}`}>{title}</Link>
       <p>{description}</p>
     </div>
   )
 }
 
-export default BlogCard;
+export default BlogPostCard;

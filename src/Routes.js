@@ -9,10 +9,10 @@ function Routes() {
 
   return (
     <Switch >
-      <Route exact path="/new">
+      <Route exact path="/posts/new">
         <BlogForm />
       </Route>
-      <Route exact path="/:postId">
+      <Route path="/posts/:postId">
         <BlogPost />
       </Route>
       <Route exact path="/">

@@ -3,15 +3,22 @@ import BlogContext from './BlogContext';
 import { useHistory } from 'react-router-dom';
 
 
-const INITIAL_STATE = {
-  title: '',
-  description: '',
-  body: ''
-};
+function BlogForm({ showEditForm, post }) {
+  const INITIAL_STATE = post ?
+    {
+      title: post.title,
+      description: post.description,
+      body: post.body
+    }
+    :
+    {
+      title: '',
+      description: '',
+      body: ''
+    };
 
-function BlogForm() {
   const history = useHistory();
-  const {addBlog, editBlog} = useContext(BlogContext);
+  const { addPost, editPost } = useContext(BlogContext);
   const [formData, setFormData] = useState(INITIAL_STATE);
 
   const handleChange = (evt) => {
@@ -24,9 +31,14 @@ function BlogForm() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if(formIsDone) {
-      addBlog(formData);
-      history.push('/');
+    if (formIsDone) {
+      if (post) {
+        editPost(post.id, formData);
+        showEditForm(false);
+      } else {
+        addPost(formData);
+        history.push('/');
+      }
     }
   }
 
@@ -40,7 +52,7 @@ function BlogForm() {
       <h2>New Post</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor='title'>Title: </label>
-        <input 
+        <input
           id="title"
           name="title"
           value={formData.title}
@@ -48,7 +60,7 @@ function BlogForm() {
         />
 
         <label htmlFor="description">Description: </label>
-        <input 
+        <input
           id="description"
           name="description"
           value={formData.description}
@@ -56,7 +68,7 @@ function BlogForm() {
         />
 
         <label htmlFor="body">Body: </label>
-        <textarea 
+        <textarea
           id="body"
           name="body"
           value={formData.body}
@@ -65,7 +77,7 @@ function BlogForm() {
         <button disabled={!formIsDone}>Save</button>
         <button onClick={() => history.push('/')}>Cancel</button>
       </form>
-    </div>
+    </div >
   )
 }
 
