@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import NavBar from './NavBar';
+import Routes from './Routes';
+import BlogContext from './BlogContext';
+import { v4 as uuid } from 'uuid';
 
 function App() {
+  const [blogs, setBlogs] = useState([]);
+
+  const addBlog = (formData) => {
+    const newBlog = {...formData, id: uuid()};
+    setBlogs(oldBlogs => [...oldBlogs, newBlog]);
+  }
+
+  const deleteBlog = (blogId) => {
+    setBlogs(oldBlogs => oldBlogs.filter(blog => blog.id !== blogId));
+  }
+
+  const editBlog = (blogId, formData) => {
+    const updatedBlog = {...formData, id: blogId};
+    setBlogs(oldBlogs => oldBlogs.map(blog => (
+      blog.id === blogId ? updatedBlog : blog
+    )));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BlogContext.Provider value={{blogs, addBlog, deleteBlog, editBlog}} >
+      <div className="App">
+        <NavBar />
+        <Routes />
+      </div>
+    </BlogContext.Provider>
   );
 }
 
