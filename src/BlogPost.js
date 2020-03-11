@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import BlogContext from './BlogContext';
 import NotFound from './NotFound'
 import BlogForm from './BlogForm';
+import Comments from './Comments';
 
 function BlogPost() {
   const history = useHistory();
@@ -31,6 +32,8 @@ function BlogPost() {
         <i onClick={handleDelete} className="fas fa-times"></i>
         <p><i>{description}</i></p>
         <p>{body}</p>
+        <hr />
+        <Comments postId={post.id}/>
       </div>
   );
 }
