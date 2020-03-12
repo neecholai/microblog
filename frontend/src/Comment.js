@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteComment } from './actions';
+import { deleteCommentFromApi } from './actions';
 
 function Comment({ comment, postId }) {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ function Comment({ comment, postId }) {
 
   return (
     <div>
-      <i onClick={() => dispatch(deleteComment(id, postId))} className="fas fa-times"></i>
+      <i onClick={() => dispatch(deleteCommentFromApi(postId, id))} className="fas fa-times"></i>
       <span>{text}</span>
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { addPost, editPost } from './actions';
+import { addPostToApi, editPostInApi } from './actions';
 import { useDispatch } from 'react-redux';
 
 
@@ -34,10 +34,10 @@ function BlogForm({ showEditForm, post, postId }) {
     evt.preventDefault();
     if (isValid) {
       if (post) {
-        dispatch(editPost(postId, formData));
+        dispatch(editPostInApi(postId, formData));
         showEditForm(false);
       } else {
-        dispatch(addPost(formData));
+        dispatch(addPostToApi(formData));
         history.push('/');
       }
     }
