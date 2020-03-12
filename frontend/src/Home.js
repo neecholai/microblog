@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import BlogPostList from './BlogPostList';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { initializeTitles } from './actions';
-import MicroblogApi from './MicroblogApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTitlesFromApi } from './actions';
 
 function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  const isLoading = useSelector(st => st.isLoading)
   const dispatch = useDispatch();
 
-  useEffect( () => {
-    const displayTitles = async () => {
-      const titles = await MicroblogApi.getTitles();
-      setIsLoading(false);
-      dispatch(initializeTitles(titles));
-    };
-    displayTitles();
-  }, [])
+  useEffect(() => {
+    dispatch(getTitlesFromApi())
+  }, [dispatch])
 
   return (
     <div>

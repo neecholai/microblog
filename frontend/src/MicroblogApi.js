@@ -10,12 +10,7 @@ class MicroblogApi {
   }
   
   static async getTitles() {
-    const titlesArray = (await axios.get(`${BASE_URL}/posts`)).data;
-    const titles = titlesArray.reduce((titlesObj,title) => {
-      const { id, ...titleInfo }  = title;
-      titlesObj[id] = titleInfo;
-      return titlesObj;
-    }, {});
+    const titles = (await axios.get(`${BASE_URL}/posts`)).data;
     return titles;
   }
   

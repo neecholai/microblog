@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux';
 function BlogPostList() {
   const titles = useSelector(st => st.titles);
 
-  const blogPostListJSX = Object.entries(titles).map(([id, post]) => (
+  const blogPostListJSX = titles.map(title => (
     <BlogPostCard
-      key={id}
-      id={id}
-      title={post.title}
-      description={post.description} />
+      key={title.id}
+      id={title.id}
+      title={title.title}
+      description={title.description} />
   ));
 
   return (

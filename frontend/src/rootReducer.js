@@ -4,11 +4,12 @@ import {
   EDIT_POST,
   DELETE_POST,
   ADD_COMMENT,
-  DELETE_COMMENT
+  DELETE_COMMENT,
+  SHOW_ERROR
 } from './actionTypes';
 import { v4 as uuid } from 'uuid';
 
-const INITIAL_STATE = { posts: {}, titles: {} }
+const INITIAL_STATE = { posts: {}, titles: [], isLoading: true }
 
 function rootReducer(state = INITIAL_STATE, action) {
   let formData;
@@ -20,14 +21,10 @@ function rootReducer(state = INITIAL_STATE, action) {
 
   switch (action.type) {
     case INITIALIZE_TITLES:
-      return { ...state, titles: action.titles }
-    
+      return { ...state, titles: action.titles, isLoading: false }
+
     case ADD_POST:
-      formData = action.payload;
-      postId = uuid();
-      const newPost = { ...formData, comments: [] };
-      updatedPosts = { ...state.posts, [postId]: newPost };
-      return { ...state, posts: updatedPosts };
+      return { ...state, posts: {...state.posts, [action.post.id]: action.post }};
 
     case EDIT_POST:
       ({ postId, formData } = action.payload);
@@ -62,6 +59,10 @@ function rootReducer(state = INITIAL_STATE, action) {
         [postId]: { ...state.posts[postId], comments: updatedComments }
       }
       return { ...state, posts: updatedPosts }
+
+    case SHOW_ERROR:
+      console.error(action.msg);
+      return state;
 
     default:
       console.warn("This action type is not valid", action.type);

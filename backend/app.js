@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const postsRoutes = require("./routes/posts");
 const postCommentsRoutes = require("./routes/postComments");
 const cors = require("cors");
+const ExpressError = require('./ExpressError');
 
 const app = express();
 
