@@ -1,4 +1,5 @@
 import {
+  INITIALIZE_TITLES,
   ADD_POST,
   EDIT_POST,
   DELETE_POST,
@@ -7,7 +8,7 @@ import {
 } from './actionTypes';
 import { v4 as uuid } from 'uuid';
 
-const INITIAL_STATE = { posts: {} }
+const INITIAL_STATE = { posts: {}, titles: {} }
 
 function rootReducer(state = INITIAL_STATE, action) {
   let formData;
@@ -18,6 +19,9 @@ function rootReducer(state = INITIAL_STATE, action) {
   let updatedComments;
 
   switch (action.type) {
+    case INITIALIZE_TITLES:
+      return { ...state, titles: action.titles }
+    
     case ADD_POST:
       formData = action.payload;
       postId = uuid();

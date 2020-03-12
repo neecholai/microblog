@@ -1,10 +1,18 @@
 import {
+  INITIALIZE_TITLES,
   ADD_POST,
   EDIT_POST,
   DELETE_POST,
   ADD_COMMENT,
   DELETE_COMMENT
 } from './actionTypes';
+
+export function initializeTitles(titles) {
+  return {
+    type: INITIALIZE_TITLES,
+    titles
+  }
+}
 
 export function addPost(formData) {
   return {
