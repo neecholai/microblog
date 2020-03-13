@@ -1,7 +1,6 @@
 import React from 'react';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
-import { useSelector } from 'react-redux';
 
 function Comments({ postId, comments }) {
   // const comments = useSelector(st => st.posts[postId].comments);

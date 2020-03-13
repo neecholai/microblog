@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom'
-import NotFound from './NotFound'
+import NotFound from '../NotFound'
 import BlogForm from './BlogForm';
-import Comments from './Comments';
+import Comments from '../comment/Comments';
 import { useSelector, useDispatch } from 'react-redux';
-import { deletePostFromApi, getPostFromApi, voteForPost } from './actions';
+import { deletePostFromApi, getPostFromApi, voteForPost } from '../redux/actions';
 
 
 function BlogPost() {

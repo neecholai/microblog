@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteCommentFromApi } from './actions';
+import { deleteCommentFromApi } from '../redux/actions';
 
 function Comment({ comment, postId }) {
   const dispatch = useDispatch();

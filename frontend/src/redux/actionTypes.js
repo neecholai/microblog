@@ -12,4 +12,5 @@ export const UPDATE_VOTES = "UPDATE_VOTES";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 
-export const SHOW_ERROR = "SHOW_ERROR";
+export const ADD_ERROR = "ADD_ERROR";
+// export const RESET_ERRORS = "RESET_ERRORS";

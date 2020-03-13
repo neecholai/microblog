@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addCommentToApi } from './actions';
+import { addCommentToApi } from '../redux/actions';
 
 function CommentForm ({ postId }) {
   const INITIAL_STATE = {text: ''};

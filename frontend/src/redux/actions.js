@@ -9,7 +9,8 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT,
   UPDATE_VOTES,
-  SHOW_ERROR
+  ADD_ERROR,
+  // RESET_ERRORS
 } from './actionTypes';
 import axios from 'axios';
 
@@ -22,7 +23,7 @@ export function getPostFromApi(id) {
       dispatch(addPost(post));
     }
     catch (err) {
-      dispatch(showError(err.response.data));
+      dispatch(addError(err.response.data));
     }
   }
 }
@@ -34,7 +35,7 @@ export function getTitlesFromApi() {
       dispatch(initializeTitles(titles));
     }
     catch (err) {
-      dispatch(showError(err.response.data));
+      dispatch(addError(err.response.data));
     }
   }
 }
@@ -49,7 +50,7 @@ export function addPostToApi(postData) {
       dispatch(addTitle(title));
     }
     catch (err) {
-      dispatch(showError(err.response.data));
+      dispatch(addError(err.response.data));
     }
   }
 }
@@ -64,7 +65,7 @@ export function editPostInApi(id, postData) {
       dispatch(editTitle(id, title));
     }
     catch (err) {
-      dispatch(showError(err.response.data));
+      dispatch(addError(err.response.data));
     }
   }
 }
@@ -77,7 +78,7 @@ export function deletePostFromApi(id) {
       dispatch(deleteTitle(id));
     }
     catch (err) {
-      dispatch(showError(err.response.data));
+      dispatch(addError(err.response.data));
     }
   }
 }
@@ -89,7 +90,7 @@ export function addCommentToApi(postId, text) {
       dispatch(addComment(postId, comment));
     }
     catch (err) {
-      dispatch(showError(err.response.data));
+      dispatch(addError(err.response.data));
     }
   }
 }
@@ -101,7 +102,7 @@ export function deleteCommentFromApi(postId, commentId) {
       dispatch(deleteComment(postId, commentId));
     }
     catch (err) {
-      dispatch(showError(err.response.data));
+      dispatch(addError(err.response.data));
     }
   }
 }
@@ -113,7 +114,7 @@ export function voteForPost(id, direction) {
       dispatch(updateVotes(id, votes));
     }
     catch (err) {
-      dispatch(showError(err.response.data));
+      dispatch(addError(err.response.data));
     }
   }
 }
@@ -125,8 +126,6 @@ function updateVotes(id, votes) {
     votes
   }
 }
-
-
 
 function initializeTitles(titles) {
   return {
@@ -194,10 +193,16 @@ function deleteComment(postId, commentId) {
   }
 }
 
-function showError(msg) {
+function addError(msg) {
   return {
-    type: SHOW_ERROR,
+    type: ADD_ERROR,
     msg
   }
 }
+
+// function resetErrors() {
+//   return {
+//     type: RESET_ERRORS,
+//   }
+// }
 

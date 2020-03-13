@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { addPostToApi, editPostInApi } from './actions';
+import { addPostToApi, editPostInApi } from '../redux/actions';
 import { useDispatch } from 'react-redux';
 
 
@@ -14,7 +14,7 @@ function BlogForm({ showEditForm, post, postId }) {
     :
     {
       title: '',
-      description: '',
+      description: undefined,
       body: ''
     };
 
