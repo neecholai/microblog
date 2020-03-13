@@ -1,0 +1,19 @@
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--alt-bg-color);
+  padding: 8px;
+}
+
+.NavBar a {
+  color: var(--main-text-color);
+  text-decoration: none;
+}
+
+.NavBar a.active {
+  border-bottom: 3px dotted var(--alt-color);
+}
+
+.NavBar a:hover {
+  color: var(--alt-text-color);
+}

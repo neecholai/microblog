@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BlogPostList from './post/BlogPostList';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTitlesFromApi } from './redux/actions';
+import './Home.css';
 
 function Home() {
   const [ranDispatch, setRanDispatch] = useState(false);
@@ -30,8 +31,8 @@ function Home() {
   }
 
   return (
-    <div>
-      <h2>Welcome to <b>Microblog</b>, the best blog on the web</h2>
+    <div className="Home">
+      <h2 className="Home-header">Welcome to <b>Microblog</b>, the best blog on the web</h2>
       {
         mainContentJSX
       }

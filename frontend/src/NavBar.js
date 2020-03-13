@@ -1,15 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './NavBar.css';
 
 function NavBar () {
 
   return (
-    <div>
-      <h1>Microblog</h1>
-      <p>Get in the Rithm of blogging!</p>
-      <NavLink exact to="/">Blog</NavLink>
+    <nav className="NavBar">
+      <NavLink exact to="/">MicroBlog</NavLink>
       <NavLink exact to="/posts/new">Add a new post</NavLink>
-    </div>
+    </nav>
   );
 }
 

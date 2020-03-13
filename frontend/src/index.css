@@ -1,5 +1,13 @@
 @import url("https://use.fontawesome.com/releases/v5.3.1/css/all.css");
 
+:root {
+  --main-text-color:  #365C7A;
+  --alt-text-color: #695C77;
+  --main-bg-color: #EFAC94;
+  --alt-bg-color: #EE717B;
+  --alt-color: #BB6B82;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

@@ -1,0 +1,12 @@
+.Home {
+
+}
+
+.Home-header {
+  font-size: 30px;
+  margin: 20px;
+}
+
+.Home > p {
+  font-size: 20px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import BlogPostCard from './BlogPostCard';
 import { useSelector } from 'react-redux';
+import './BlogPostList.css'
 
 
 function BlogPostList() {
@@ -19,7 +20,7 @@ function BlogPostList() {
   ));
 
   return (
-    <div>
+    <div className="BlogPostList">
       {blogPostListJSX}
     </div>
   )
