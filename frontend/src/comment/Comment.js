@@ -8,7 +8,7 @@ function Comment({ comment, postId }) {
 
   return (
     <div>
-      <i onClick={() => dispatch(deleteCommentFromApi(postId, id))} className="fas fa-times"></i>
+      <i onClick={() => dispatch(deleteCommentFromApi(postId, id))} className="p-1 text-danger fas fa-times"></i>
       <span>{text}</span>
     </div>
   )

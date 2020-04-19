@@ -1,6 +1,7 @@
 import React from 'react';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
+import './Comments.css'
 
 function Comments({ postId, comments }) {
   // const comments = useSelector(st => st.posts[postId].comments);
@@ -10,8 +11,9 @@ function Comments({ postId, comments }) {
   );
 
   return (
-    <div>
+    <div className="Comments">
       <h2>Comments</h2>
+      <hr />
       {commentsListJSX}
       <CommentForm postId={postId}/>
     </div>

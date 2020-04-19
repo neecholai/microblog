@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { voteForPost } from '../redux/actions';
 import './BlogPostCard.css';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 function BlogPostCard({ id, title, description, votes }) {
   const dispatch = useDispatch();
@@ -13,9 +13,9 @@ function BlogPostCard({ id, title, description, votes }) {
   };
 
   return (
-    <Card border="secondary" as={Link} to={`/posts/${id}`} className="m-3 BlogPostCard col-xs-8 col-sm-6 col-md-4">
+    <Card border="secondary" className="m-3 BlogPostCard col-xs-8 col-sm-6 col-md-4">
       <Card.Body className="BlogPostCard-body">
-        <Card.Title className="BlogPostCard-title">
+        <Card.Title as={Link} to={`/posts/${id}`} className="BlogPostCard-title">
           {title}
         </Card.Title>
         <Card.Text className="BlogPostCard-description">{description}</Card.Text>

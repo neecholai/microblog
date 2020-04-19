@@ -1,0 +1,7 @@
+.CommentForm-group {
+  display: inline-flex;
+}
+
+.CommentForm-input {
+  width: inherit;
+}

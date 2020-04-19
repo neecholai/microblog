@@ -1,19 +1,18 @@
 .NavBar {
   display: flex;
   justify-content: space-between;
-  background-color: var(--alt-bg-color);
   padding: 8px;
 }
 
 .NavBar a {
-  color: var(--main-text-color);
+  color: white;
   text-decoration: none;
 }
 
 .NavBar a.active {
-  border-bottom: 3px dotted var(--alt-color);
+  border-bottom: 3px dotted white;
 }
 
 .NavBar a:hover {
-  color: var(--alt-text-color);
+  color: grey;
 }

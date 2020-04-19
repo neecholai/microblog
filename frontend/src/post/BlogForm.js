@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { addPostToApi, editPostInApi } from '../redux/actions';
 import { useDispatch } from 'react-redux';
-
+import { Form, Button, ButtonGroup } from 'react-bootstrap';
+import './BlogForm.css';
 
 function BlogForm({ showEditForm, post, postId }) {
-  const INITIAL_STATE = post ?
-    {
-      title: post.title,
-      description: post.description,
-      body: post.body
-    }
-    :
-    {
-      title: '',
-      description: undefined,
-      body: ''
-    };
+  const INITIAL_STATE = post
+    ? {
+        title: post.title,
+        description: post.description,
+        body: post.body,
+      }
+    : {
+        title: '',
+        description: undefined,
+        body: '',
+      };
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -24,9 +24,9 @@ function BlogForm({ showEditForm, post, postId }) {
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
-    setFormData(oldData => ({
+    setFormData((oldData) => ({
       ...oldData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -41,42 +41,57 @@ function BlogForm({ showEditForm, post, postId }) {
         history.push('/');
       }
     }
-  }
+  };
 
-  const isValid = Object.values(formData).every(val => val);
+  const isValid = Object.values(formData).every((val) => val);
 
   return (
-    <div>
-      <h2>New Post</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='title'>Title: </label>
-        <input
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="description">Description: </label>
-        <input
-          id="description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="body">Body: </label>
-        <textarea
-          id="body"
-          name="body"
-          value={formData.body}
-          onChange={handleChange}
-        />
-        <button disabled={!isValid}>Save</button>
-        <button onClick={() => history.push('/')}>Cancel</button>
-      </form>
-    </div >
-  )
+    <div className="BlogForm m-2">
+      <Form className="col-xs-12 col-md-8" onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label as="h5" htmlFor="title">Title: </Form.Label>
+          <Form.Control
+            id="title"
+            name="title"
+            className="BlogForm-input"
+            value={formData.title}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label as="h5" htmlFor="description">Description: </Form.Label>
+          <Form.Control
+            id="description"
+            name="description"
+            className="BlogForm-input"
+            value={formData.description}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label as="h5" htmlFor="body">Body: </Form.Label>
+          <Form.Control
+            id="body"
+            name="body"
+            as='textarea'
+            className="BlogForm-input"
+            value={formData.body}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <div className="BlogForm-btns">
+          <ButtonGroup>
+            <Button disabled={!isValid} variant="primary" type="submit">
+              Save
+            </Button>
+            <Button onClick={() => history.push('/')} variant="secondary">
+              Cancel
+            </Button>
+          </ButtonGroup>
+        </div>
+      </Form>
+    </div>
+  );
 }
 
 export default BlogForm;

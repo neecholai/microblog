@@ -10,6 +10,8 @@ function Home() {
   let titles = useSelector(st => st.titles);
   const dispatch = useDispatch();
 
+  console.log({titles});
+
   useEffect(() => {
     const runDispatch = async () => {
       await dispatch(getTitlesFromApi());
@@ -18,7 +20,7 @@ function Home() {
 
     if (titles.length === 0 && !ranDispatch) runDispatch();
     if (titles.length === 0 && ranDispatch) setNoTitles(true);
-  }, [ranDispatch, dispatch, titles])
+  }, [])
 
   let mainContentJSX;
 

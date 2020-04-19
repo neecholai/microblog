@@ -1,0 +1,62 @@
+.BlogPost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.BlogPost-card {
+  color: black;
+  width: 80%;
+  position: relative;
+}
+
+.BlogPost-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.BlogPost-title {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+}
+
+.BlogPost-description {
+  color: black;
+  font-size: 24px;
+}
+
+.BlogPost-icons {
+  font-size: 16px;
+  color: black;
+  position: absolute;
+  right: 0;
+  width: 2.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.BlogPost-voteWrapper {
+  display: flex;
+  justify-content: center;
+  /* align-items: flex-end; */
+  /* position: absolute; */
+  /* width: 100%; */
+  /* bottom: 0; */
+  /* right: 20; */
+}
+
+.fa-thumbs-up {
+  color: green;
+}
+
+.fa-thumbs-down {
+  color: red;
+}
+
+.fas:hover {
+  cursor: pointer;
+}
