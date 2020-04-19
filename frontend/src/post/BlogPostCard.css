@@ -1,6 +1,37 @@
 .BlogPostCard {
+  height: 15rem;
+  border: solid black 2px;
+  border-radius: 10%;
+  color: black;
+}
+
+.BlogPostCard:hover {
+  text-decoration: none;
+  color: black;
+  opacity: 0.6;
+  transform: scale(1.05);
+}
+
+.BlogPostCard-body {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  width: 60%;
-  border:
+  align-items: center;
+}
+
+.BlogPostCard-title {
+  color: black;
+  font-size: 24px;
+}
+
+.BlogPostCard-voteWrapper {
+  display: flex;
+}
+
+.fa-thumbs-up {
+  color: green;
+}
+
+.fa-thumbs-down {
+  color: red;
 }
