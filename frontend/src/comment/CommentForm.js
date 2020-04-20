@@ -23,7 +23,7 @@ function CommentForm({ postId }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className='py-2' onSubmit={handleSubmit}>
       <Form.Group className="CommentForm-group">
         <Form.Control
           className="CommentForm-input"
