@@ -25,7 +25,7 @@ function BlogPost() {
 
     if (!post && !ranDispatch) runDispatch();
     if (!post && ranDispatch) setPostNotFound(true);
-  }, [ranDispatch, dispatch, post, postId]);
+  }, []);
 
   const handleDelete = async () => {
     await dispatch(deletePostFromApi(postId));

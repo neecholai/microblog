@@ -14,7 +14,7 @@ function BlogForm({ showEditForm, post, postId }) {
       }
     : {
         title: '',
-        description: undefined,
+        description: '',
         body: '',
       };
 

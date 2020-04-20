@@ -62,7 +62,7 @@ export function editPostInApi(id, postData) {
       const { body, ...title } = postResponse;
       const post = {...postResponse, comments: []};
       dispatch(editPost(id, post));
-      dispatch(editTitle(id, title));
+      dispatch(editTitle(title));
     }
     catch (err) {
       dispatch(addError(err.response.data));
@@ -74,8 +74,8 @@ export function deletePostFromApi(id) {
   return async dispatch => {
     try {
       await axios.delete(`${BASE_URL}/posts/${id}`);
-      dispatch(deletePost(id));
-      dispatch(deleteTitle(id));
+      dispatch(deletePost(+id));
+      dispatch(deleteTitle(+id));
     }
     catch (err) {
       dispatch(addError(err.response.data));

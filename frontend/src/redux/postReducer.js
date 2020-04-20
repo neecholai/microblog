@@ -19,7 +19,6 @@ function postReducer(state = {}, action) {
       return { ...state, [action.id]: updatedPost }
 
     case DELETE_POST:
-      // ({[action.id], ...updatedPosts}) = state;
       const updatedPosts = { ...state };
       delete updatedPosts[action.id];
       return updatedPosts;
